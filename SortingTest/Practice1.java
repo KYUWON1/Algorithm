@@ -12,6 +12,18 @@ import java.util.Arrays;
 public class Practice1 {
     // 계수 정렬
     public static void solution(int[] arr) {
+        int max = Arrays.stream(arr).max().getAsInt();
+        int[] table = new int[max+1];
+        for (int i = 0; i < arr.length; i++) {
+            table[arr[i]]++;
+        }
+        int idx = 0;
+        for (int i = 0; i < table.length; i++) {
+            while(table[i] != 0){
+                arr[idx++] = i;
+                table[i]--;
+            }
+        }
 
     }
 

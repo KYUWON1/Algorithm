@@ -11,8 +11,25 @@ package SortingTest;// Practice4
 
 public class Practice4 {
     public static int solution(int[] nums) {
-
-        return 0;
+        int idx1 = -1;
+        int idx2 = -1;
+        for (int i = 1; i < nums.length; i++) {
+            if(idx1 == -1 && nums[i] < nums[i-1]){ // 6 4  일때, 2 저장
+                //가장 앞쪽 idx를 저장
+                idx1 = i-1;
+            }
+            if(idx1 != -1 && nums[i] < nums[i-1]){ // 이미 idx1은 저장, 5 3, 5저장
+                idx2 = i;
+            }
+        }
+        if(idx1 == -1 ){
+            return 0;
+        }
+        if(idx2 == -1){
+            return 2;
+        }
+        // 길이를 구해서 return
+        return -idx1 + idx2 + 1;
     }
 
     public static void main(String[] args) {
